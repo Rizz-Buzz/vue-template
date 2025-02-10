@@ -1,0 +1,52 @@
+{
+    "name": "vue-dev-standards",
+    "private": true,
+    "version": "0.0.0",
+    "type": "module",
+    "scripts": {
+        "dev": "nuxt dev",
+        "build": "nuxt build",
+        "generate": "nuxt generate",
+        "preview": "nuxt preview",
+        "decrypt": "sops -d --input-type yaml --output-type yaml .env.sops > .env",
+        "encrypt": "sops -e --input-type yaml --output-type yaml .env > .env.sops",
+        "clean": "rimraf dist",
+        "format": "prettier --write \"src/**/*.{ts,vue,js,json}\"",
+        "format:check": "prettier --check \"src/**/*.{ts,vue,js,json}\"",
+        "format:fix": "prettier --write \"src/**/*.{ts,vue,js,json}\" && eslint --fix \"src/**/*.{ts,vue,js}\"",
+        "type-check": "vue-tsc --noEmit",
+        "test": "vitest",
+        "test:coverage": "vitest run --coverage",
+        "test:ui": "vitest --ui",
+        "prepare": "husky install",
+        "start": "npm run decrypt && npm run dev",
+        "clean-install": "npm run clean && npm install",
+        "serve": "vite preview",
+        "analyze": "vite-bundle-analyzer"
+    },
+    "dependencies": {
+        "@nuxtjs/tailwindcss": "^6.x.x",
+        "@pinia/nuxt": "^0.9.0",
+        "@vueuse/nuxt": "^10.x.x",
+        "axios": "^1.6.7",
+        "nuxt": "^3.15.4",
+        "pinia": "^2.3.1",
+        "vue": "^3.4.15",
+        "vue-router": "^4.2.5"
+    },
+    "devDependencies": {
+        "@nuxt/devtools": "latest",
+        "@nuxt/test-utils": "^3.x.x",
+        "@types/node": "^20.11.0",
+        "@vitejs/plugin-vue": "^5.0.3",
+        "@vue/eslint-config-typescript": "^12.0.0",
+        "eslint": "^8.56.0",
+        "eslint-plugin-vue": "^9.19.0",
+        "prettier": "^3.2.0",
+        "rimraf": "^5.0.5",
+        "typescript": "^5.2.2",
+        "vite": "^5.0.12",
+        "vitest": "^0.x.x",
+        "vue-tsc": "^1.8.27"
+    }
+}
